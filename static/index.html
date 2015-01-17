@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <title>Discount Ascii Warehouse</title>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/home.css"/>
     </head>
-    <body>
-        <header>
-            <h1>Discount Ascii Warehouse</h1>
+    <body ng-controller="MainCtrl">
+        <div class="container">
+            <header>
+                <h1>Discount Ascii Warehouse</h1>
 
-            <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
+                <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
 
-            <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
-        </header>
+                <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
+            </header>
+            <section class="products">
+                <nav class="alert alert-info  sort-nav">
+                    <ul class="list-unstyled">
+                        <li ng-click="setPredicate('price')">Price</li> 
+                        <li ng-click="setPredicate('size')">Size</li>   
+                        <li ng-click="setPredicate('id')">Id</li>
+                    </ul>
+                </nav>
+                <ul class="list-unstyled row list-group">
+                    <li class="col-xs-12" ng-repeat="product in products | orderBy:predicate">
+                        <h2>{{product.id}}</h2>
+                        <div class="well face">
+                            <span style="font-size:{{product.size}}px;">{{product.face}}</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li>price: {{product.price | convertPrice}}</li>
+                            <li>size: {{product.size}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-        <section class="products">
-            ... products go here ...
-        </section>
+            <script src="bower_components/angular/angular.js"></script>
+            <script src="bower_components/angular-resource/angular-resource.js"></script>
+            <script src="bower_components/angular-route/angular-route.js"></script>
+            <script src="bower_components/oboe/dist/oboe-browser.js"></script>
+            <script src="app.js"></script>
+        </div>
     </body>
 </html>
