@@ -1,9 +1,6 @@
 var http = require('http');
-// var HttpCors/ = require('http-cors');
 var serveStaticFiles = require('ecstatic')({ root: __dirname + '/static' });
 var port = process.env.PORT || 8000;
-
-// var cors = new HttpCors();
 
 http.createServer(function (req, res) {
     if (req.url.indexOf('/ad') === 0) {

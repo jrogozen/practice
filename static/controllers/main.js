@@ -10,8 +10,6 @@ app.controller('MainCtrl', function MainCtrl($scope, $route, $timeout, API_URL, 
   var limit = 5,
       skip = 0;
 
-  var used_ads = [];
-
   function start(limit, skip) {
     var counter = 1;
     oboe(API_URL + '/api/products?limit=' + limit + '&skip=' + skip)

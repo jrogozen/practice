@@ -10,11 +10,9 @@ app.factory('AdsFactory', function AdsFactory() {
     
     used_ads.push(rand);
     return rand;
-    
   }
 
   return {
     getId: getId
   }
-  
 });
