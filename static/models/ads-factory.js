@@ -4,15 +4,17 @@ app.factory('AdsFactory', function AdsFactory() {
   function getId() {
     var rand = Math.floor(Math.random()*1000);
 
-    while (_.contains(used_ads, rand)) {
-      getFreshId();
+    if (_.contains(used_ads, rand)) {
+      getId();
     }
-
+    
     used_ads.push(rand);
     return rand;
+    
   }
 
   return {
     getId: getId
   }
+  
 });

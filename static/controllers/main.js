@@ -70,6 +70,6 @@ app.controller('MainCtrl', function MainCtrl($scope, $route, $timeout, API_URL, 
   };
 
   $scope.getFreshId = function() {
-    AdsFactory.getId();
+    return AdsFactory.getId();
   }
 });
