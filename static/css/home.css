@@ -1,0 +1,17 @@
+.sort-nav {
+  margin-top: 20px;
+}
+.sort-nav li {
+  display: inline-block;
+}
+#scroller {
+  max-height: 800px;
+  overflow: auto;
+}
+.well.ad {
+  margin-top: 20px;
+}
+/*.products-list {
+  max-height: 700px;
+  overflow: auto;
+}*/

@@ -6,41 +6,51 @@
         <link rel="stylesheet" href="css/home.css"/>
     </head>
     <body ng-controller="MainCtrl">
-        <div class="container">
-            <header>
-                <h1>Discount Ascii Warehouse</h1>
+        <div id="scroller" scroller>
+            <div class="container">
+                <header>
+                    <h1>Discount Ascii Warehouse</h1>
 
-                <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
+                    <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
 
-                <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
-            </header>
-            <section class="products">
-                <nav class="alert alert-info  sort-nav">
-                    <ul class="list-unstyled">
-                        <li ng-click="setPredicate('price')">Price</li> 
-                        <li ng-click="setPredicate('size')">Size</li>   
-                        <li ng-click="setPredicate('id')">Id</li>
-                    </ul>
-                </nav>
-                <ul class="list-unstyled row list-group">
-                    <li class="col-xs-12" ng-repeat="product in products | orderBy:predicate">
-                        <h2>{{product.id}}</h2>
-                        <div class="well face">
-                            <span style="font-size:{{product.size}}px;">{{product.face}}</span>
-                        </div>
+                    <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
+                </header>
+                <section class="products">
+                    <nav class="alert alert-info  sort-nav">
                         <ul class="list-unstyled">
-                            <li>price: {{product.price | convertPrice}}</li>
-                            <li>size: {{product.size}}</li>
+                            <li ng-click="setPredicate('price')">Price</li> 
+                            <li ng-click="setPredicate('size')">Size</li>   
+                            <li ng-click="setPredicate('id')">Id</li>
                         </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <script src="bower_components/angular/angular.js"></script>
-            <script src="bower_components/angular-resource/angular-resource.js"></script>
-            <script src="bower_components/angular-route/angular-route.js"></script>
-            <script src="bower_components/oboe/dist/oboe-browser.js"></script>
-            <script src="app.js"></script>
+                    </nav>
+                    <div ng-if="loading" class="progress">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+                      </div>
+                    </div>
+                    <ul class="list-unstyled row products-list list-group">
+                        <li class="col-xs-12" ng-repeat="product in products | orderBy:predicate" ads>
+                            <h2>{{product.id}}</h2>
+                            <div class="well face">
+                                <span style="font-size:{{product.size}}px;">{{product.face}}</span>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li>price: {{product.price | convertPrice}}</li>
+                                <li>size: {{product.size}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </div>
         </div>
+        <script src="bower_components/lodash/dist/lodash.min.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/oboe/dist/oboe-browser.js"></script>
+        <script src="app.js"></script>
+        <script src="filters.js"></script>
+        <script src="controllers/main.js"></script>
+        <script src="directives/ads.js"></script>
+        <script src="directives/scroller.js"></script>
+        <script src="models/ads-factory.js"></script>
     </body>
 </html>
